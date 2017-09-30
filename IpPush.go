@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"log"
 	"io/ioutil"
-	"regexp"
 )
 
 func publicIpController(w http.ResponseWriter, r *http.Request) {
@@ -13,7 +12,7 @@ func publicIpController(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPublicIp() string {
-	resp, err := http.Get("http://1212.ip138.com/ic.asp")
+	resp, err := http.Get("http://47.52.66.195:56667")
 	if err != nil {
 		// handle error
 	}
@@ -23,8 +22,7 @@ func getPublicIp() string {
 		// handle error
 	}
 	// 正则匹配出IP
-	reg, err := regexp.Compile(`((?:(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d))))`)
-	return reg.FindString(string(body))
+	return string(body)
 }
 
 
